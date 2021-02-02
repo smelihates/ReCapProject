@@ -16,7 +16,16 @@ namespace Business.Concrete
         }
         public void Add(Brand brand)
         {
-            _brandDal.Add(brand);
+            if (brand.BrandName.Length>=2)
+            {
+                _brandDal.Add(brand);
+                Console.WriteLine("{0} markası başarıyla kaydedildi.",brand.BrandName);
+            }
+            else
+            {
+                Console.WriteLine("{0} markası en az iki karakter olmalı!",brand.BrandName);
+            }
+            
         }
 
         public void Delete(Brand brand)
@@ -29,14 +38,23 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
-        public Brand GetByBrandId(int Id)
+        public Brand GetById(int Id)
         {
-            return _brandDal.GetByBrandId(Id);
+            return _brandDal.Get(p => p.BrandId == Id);
         }
 
         public void Update(Brand brand)
         {
-            _brandDal.Update(brand);
+            if (brand.BrandName.Length >= 2)
+            {
+                _brandDal.Update(brand); 
+                Console.WriteLine("{0} markası başarıyla kaydedildi.", brand.BrandName);
+            }
+            else
+            {
+                Console.WriteLine("{0} markası en az iki karakter olmalı!", brand.BrandName);
+            }
+            
         }
     }
 }

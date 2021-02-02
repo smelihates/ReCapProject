@@ -15,10 +15,18 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.DailyPrice>0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine("Araba kaydı başarıyla yapıldı");
+            }
+            else
+            {
+                Console.WriteLine("{0} ID'li araba için günlük fiyat değeri sıfırdan büyük olmalı!",car.Id);
+            }
+            
         }
 
         public void Delete(Car car)
@@ -31,24 +39,28 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetByBrandId(int BrandId)
+        public List<Car> GetCarsByBrandId(int Id)
         {
-            return _carDal.GetByBrandId(BrandId);
+            return _carDal.GetAll(p => p.BrandId == Id);
         }
 
-        public Car GetByCarId(int Id)
+        public List<Car> GetCarsByColorId(int Id)
         {
-            return _carDal.GetByCarId(Id);
-        }
-
-        public List<Car> GetByColorId(int ColorId)
-        {
-            return _carDal.GetByColorId(ColorId);
+            return _carDal.GetAll(p => p.ColorId == Id);
         }
 
         public void Update(Car car)
         {
-            _carDal.Update(car);
+            if (car.DailyPrice > 0)
+            {
+                _carDal.Update(car);
+                Console.WriteLine("Araba kaydı başarıyla güncellendi");
+            }
+            else
+            {
+                Console.WriteLine("{0} ID'li araba için günlük fiyat değeri sıfırdan büyük olmalı!", car.Id);
+            }
+            
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Business.Concrete
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
-
         public ColorManager(IColorDal colorDal)
         {
             _colorDal = colorDal;
@@ -30,14 +29,16 @@ namespace Business.Concrete
             return _colorDal.GetAll();
         }
 
-        public Color GetByColorId(int Id)
+        public Color GetById(int Id)
         {
-            return _colorDal.GetByColorId(Id);
+            return _colorDal.Get(c => c.ColorId == Id);
         }
 
         public void Update(Color color)
         {
             _colorDal.Update(color);
         }
+
+
     }
 }
