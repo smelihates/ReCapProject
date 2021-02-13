@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -14,48 +16,50 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
-            if (brand.BrandName.Length>=2)
+            if (brand.BrandName.Length < 2)
+            {
+                return new ErrorResult(Messages.BrandNameInvalid);
+            }
+            else
             {
                 _brandDal.Add(brand);
-                Console.WriteLine("{0} markası başarıyla kaydedildi.",brand.BrandName);
+                return new SuccessResult(Messages.BrandAdded);
             }
-            else
-            {
-                Console.WriteLine("{0} markası en az iki karakter olmalı!",brand.BrandName);
-            }
-            
+
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new ErrorResult(Messages.BrandDeleted);
+
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
-        public Brand GetById(int Id)
+        public IDataResult<Brand> GetById(int Id)
         {
-            return _brandDal.Get(p => p.BrandId == Id);
+            return new SuccessDataResult<Brand>(_brandDal.Get(p => p.BrandId == Id));
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
-            if (brand.BrandName.Length >= 2)
+            if (brand.BrandName.Length < 2)
             {
-                _brandDal.Update(brand); 
-                Console.WriteLine("{0} markası başarıyla kaydedildi.", brand.BrandName);
+                return new ErrorResult(Messages.BrandNameInvalid);
+
             }
             else
             {
-                Console.WriteLine("{0} markası en az iki karakter olmalı!", brand.BrandName);
-
+                _brandDal.Update(brand);
+                return new SuccessResult(Messages.BrandUpdated);
             }
-            
+
         }
     }
 }
