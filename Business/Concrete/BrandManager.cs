@@ -33,7 +33,8 @@ namespace Business.Concrete
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            return new ErrorResult(Messages.BrandDeleted);
+
+            return new SuccessResult(Messages.BrandDeleted);
 
         }
 

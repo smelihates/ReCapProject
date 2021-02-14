@@ -14,7 +14,7 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        
+
 
         public RentalManager(IRentalDal rentalDal)
         {
@@ -29,15 +29,15 @@ namespace Business.Concrete
 
             foreach (var item in result)
             {
-                if (item.ReturnDate == null)
+                if (item.CarId == rental.CarId && item.ReturnDate == null)
                 {
                     return new ErrorResult(Messages.RentalReturnError);
                 }
             }
 
             _rentalDal.Add(rental);
-                return new SuccessResult(Messages.RentalAdded);
-           
+            return new SuccessResult(Messages.RentalAdded);
+
         }
 
         public IResult Delete(Rental rental)
@@ -51,9 +51,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
         }
 
-        public IDataResult<Rental> GetById(int carId)
+        public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.CarId == carId));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id));
         }
 
         public IResult Update(Rental rental)
@@ -71,12 +71,12 @@ namespace Business.Concrete
 
             }
             return new ErrorResult();
-            
+
         }
 
         public IDataResult<List<Rental>> GetRentedCars()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(p=>p.ReturnDate==null), Messages.RentalsListed);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(p => p.ReturnDate == null), Messages.RentalsListed);
         }
 
 
