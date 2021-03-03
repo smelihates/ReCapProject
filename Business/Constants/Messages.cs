@@ -27,6 +27,15 @@ namespace Business.Constants
         public static string UserDeleted = "Kullanıcı sistemden silindi'";
         public static string UserUpdated = "Kullanıcı güncellendi";
         public static string UsersListed = "Kullanıcılar listelendi";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string UserRegistered = "Kullanıcı kaydı oluşturuldu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string UserPasswordError = "Parola hatası";
+        public static string UserSucessfulLogin = "Başarılı giriş";
+
+        public static string AuthorizationDenied = "Yetkilendirme reddedildi";
+
+        public static string AccessTokenCreated = "Token oluşturuldu";
 
         public static string CustomerAdded = "Müşteri sisteme eklendi";
         public static string CustomerDeleted = "Müşteri sistemden silindi'";
@@ -46,5 +55,7 @@ namespace Business.Constants
         public static string CarImagesListed = "Araç resimleri listelendi";
         public static string CarImageUpdated = "Araç resmi güncellendi";
         public static string MaxCarImagesExceeded = "Maksimum araç resim sayısı aşıldı!";
+
+        
     }
 }

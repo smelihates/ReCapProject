@@ -1,9 +1,10 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.InMemory;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Data;
+using Entities.Concrete;
 //
 
 namespace ConsoleUI
@@ -478,7 +479,7 @@ namespace ConsoleUI
             Console.WriteLine("Kullanıcı Email'i giriniz");
             user.Email = Console.ReadLine();
 
-            user.Password = "12df12er";
+            //user.Password = "12df12er";
 
             var result = userManager.Add(user);
 
@@ -507,7 +508,7 @@ namespace ConsoleUI
             Console.WriteLine("Kullanıcı Email'i giriniz");
             user1.Email = Console.ReadLine();
 
-            user1.Password = "12df12er";
+            //user1.Password = "12df12er";
 
             var result = userManager.Update(user1);
 
