@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WebAPI.Models;
 using System.IO;
 using Business.Constants;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebAPI.Controllers
 {
@@ -17,10 +18,11 @@ namespace WebAPI.Controllers
     public class CarImagesController : Controller
     {
         ICarImageService _carImageService;
-
-        public CarImagesController(ICarImageService carImageService)
+        public static IWebHostEnvironment _webHostEnvironment;
+        public CarImagesController(ICarImageService carImageService, IWebHostEnvironment webHostEnvironment)
         {
             _carImageService = carImageService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet("getall")]
@@ -34,7 +36,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("getbyid")]
+        [HttpGet("getbyid")]
         public IActionResult GetById(int carImageId)
         {
             var result = _carImageService.GetById(carImageId);
@@ -45,7 +47,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("getimagesbycarid")]
+        [HttpGet("getimagesbycarid")]
         public IActionResult GetImagesByCarId(int carId)
         {
             var result = _carImageService.GetImagesByCarId(carId);
@@ -103,9 +105,10 @@ namespace WebAPI.Controllers
         {
             var newImageGuid = Guid.NewGuid() + ".jpeg";
 
-            string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Entitiesi\CarImages");
-
-            return $@"{path}\{newImageGuid}";
+            //string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Entitiesi\CarImages");
+            //string path = _webHostEnvironment.WebRootPath + "\\CarImages\\";
+            string path = "CarImages\\";
+            return $@"\{path}\{newImageGuid}";
         }
 
         private CarImage AddCarImage(FileUpload uploadCarImage)
@@ -116,7 +119,8 @@ namespace WebAPI.Controllers
 
                 if (uploadCarImage.CarId > 0)
                 {
-                    string path = CreateImageGuid();
+                    string Guid= CreateImageGuid();
+                    string path = _webHostEnvironment.WebRootPath + Guid;
                     using (FileStream fileStream = System.IO.File.Create(path))
                     {
                         uploadCarImage.Image.CopyTo(fileStream);
@@ -125,7 +129,7 @@ namespace WebAPI.Controllers
                     CarImage carImage = new CarImage();
 
                     carImage.CarId = uploadCarImage.CarId;
-                    carImage.ImagePath = path;
+                    carImage.ImagePath = Guid;
                     carImage.Date = DateTime.Now;
                     carImage.Id = uploadCarImage.Id;
 

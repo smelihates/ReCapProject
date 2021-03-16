@@ -5,6 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\CarImages\36db7994-42e3-4766-95a7-d878e8dc8fd6.jpeg" />
+    <Content Remove="wwwroot\CarImages\37ac75e3-1e46-4669-96e3-964b8e5c81c0.jpeg" />
+    <Content Remove="wwwroot\CarImages\3cf99d99-6d40-43f5-add8-9180fbe4b130.jpeg" />
+    <Content Remove="wwwroot\CarImages\7088b3e8-0da2-42fa-b9eb-2280636685c8.jpeg" />
+    <Content Remove="wwwroot\CarImages\7e77318b-4ca1-485d-8f3a-478303a5c3cc.jpeg" />
+    <Content Remove="wwwroot\CarImages\90d7b9a8-481f-43c8-9d10-47922130bb63.jpeg" />
+    <Content Remove="wwwroot\CarImages\99bcadeb-423d-4423-9875-a2a937346009.jpeg" />
+    <Content Remove="wwwroot\CarImages\a7d5f0be-caa8-4ab7-a869-3b923a166d12.jpeg" />
+    <Content Remove="wwwroot\CarImages\a9794311-df96-4bc9-bdb9-1b91ad0306a6.jpeg" />
+    <Content Remove="wwwroot\CarImages\b72b6cc9-f42e-4852-b63c-7395f295ef8d.jpeg" />
+    <Content Remove="wwwroot\CarImages\c897c013-70fe-4d97-9604-88eaab71d356.jpeg" />
+    <Content Remove="wwwroot\CarImages\d995288e-a336-4ca3-9683-939fcf583586.jpeg" />
+    <Content Remove="wwwroot\CarImages\dc6d0de4-2233-43ae-b772-52faa56d33e1.jpeg" />
+    <Content Remove="wwwroot\CarImages\e10085b3-f41b-4fe9-bcac-7c8241719e06.jpeg" />
+    <Content Remove="wwwroot\CarImages\e23a8e45-e7bb-48f9-b836-0c0e2edf50db.jpeg" />
+    <Content Remove="wwwroot\CarImages\rent.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
   </ItemGroup>
@@ -14,6 +33,25 @@
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\Entitiesi\Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\CarImages\36db7994-42e3-4766-95a7-d878e8dc8fd6.jpeg" />
+    <None Include="wwwroot\CarImages\37ac75e3-1e46-4669-96e3-964b8e5c81c0.jpeg" />
+    <None Include="wwwroot\CarImages\3cf99d99-6d40-43f5-add8-9180fbe4b130.jpeg" />
+    <None Include="wwwroot\CarImages\7088b3e8-0da2-42fa-b9eb-2280636685c8.jpeg" />
+    <None Include="wwwroot\CarImages\7e77318b-4ca1-485d-8f3a-478303a5c3cc.jpeg" />
+    <None Include="wwwroot\CarImages\90d7b9a8-481f-43c8-9d10-47922130bb63.jpeg" />
+    <None Include="wwwroot\CarImages\99bcadeb-423d-4423-9875-a2a937346009.jpeg" />
+    <None Include="wwwroot\CarImages\a7d5f0be-caa8-4ab7-a869-3b923a166d12.jpeg" />
+    <None Include="wwwroot\CarImages\a9794311-df96-4bc9-bdb9-1b91ad0306a6.jpeg" />
+    <None Include="wwwroot\CarImages\b72b6cc9-f42e-4852-b63c-7395f295ef8d.jpeg" />
+    <None Include="wwwroot\CarImages\c897c013-70fe-4d97-9604-88eaab71d356.jpeg" />
+    <None Include="wwwroot\CarImages\d995288e-a336-4ca3-9683-939fcf583586.jpeg" />
+    <None Include="wwwroot\CarImages\dc6d0de4-2233-43ae-b772-52faa56d33e1.jpeg" />
+    <None Include="wwwroot\CarImages\e10085b3-f41b-4fe9-bcac-7c8241719e06.jpeg" />
+    <None Include="wwwroot\CarImages\e23a8e45-e7bb-48f9-b836-0c0e2edf50db.jpeg" />
+    <None Include="wwwroot\CarImages\rent.jpg" />
   </ItemGroup>
 
 

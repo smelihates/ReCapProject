@@ -681,7 +681,7 @@ namespace ConsoleUI
 
             foreach (var car in result.Data)
             {
-                Console.WriteLine("Id: {0,-2} Marka:{1,-10} Renk:{2,-10} Fiyat:{3,-5:0}TL", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
+                Console.WriteLine("Id: {0,-2} Marka:{1,-10} Renk:{2,-10} Fiyat:{3,-5:0}TL", car.CarId, car.BrandName, car.ColorName, car.DailyPrice);
             }
 
             Console.WriteLine(result.Message);
