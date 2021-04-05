@@ -27,7 +27,7 @@ namespace Business.Concrete
         }
 
         [TransactionScopeAspect]
-        [SecuredOperation("rental.add")]
+        //[SecuredOperation("rental.add")]
         [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
@@ -63,9 +63,25 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<Rental> GetById(int id)
+        public IResult IsCarRental(int carId)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id));
+            var result = _rentalDal.GetAll();
+
+
+            foreach (var item in result)
+            {
+                if (item.CarId == carId && item.ReturnDate == null)
+                {
+                    
+                    return new ErrorResult(Messages.RentalReturnError);
+
+                }
+            }
+
+            
+            return new SuccessResult(Messages.RentalCarAvaliable);
+
+            
         }
 
         [CacheRemoveAspect("IRentalService.Get")]

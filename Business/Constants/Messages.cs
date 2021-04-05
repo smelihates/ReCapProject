@@ -49,6 +49,7 @@ namespace Business.Constants
         public static string RentalsListed = "Kiralamalar listelendi";
 
         public static string RentalReturnError = "Araç kiralama için uygun değil! Başka Araç seçin.";
+        public static string RentalCarAvaliable= "Araç kiralama için uygun";
 
         public static string CarImageAdded = "Araç resmi eklendi.";
         public static string CarImageDeleted = "Araç resmi silindi";
@@ -56,6 +57,14 @@ namespace Business.Constants
         public static string CarImageUpdated = "Araç resmi güncellendi";
         public static string MaxCarImagesExceeded = "Maksimum araç resim sayısı aşıldı!";
 
-        
+        public static string CreditCardAdded = "Kredi kartı bilgileri eklendi";
+        public static string CreditCardDeleted = "Kredi kartı bilgileri silindi";
+        public static string CreditCardUpdated = "Kredi kartı bilgileri güncellendi";
+
+        public static string PaymentAdded= "Ödeme tamamlandı";
+        public static string PaymentUpdated = "Ödeme bilgileri güncellendi";
+        public static string PaymentsListed = "Ödemeler listelendi";
+
+
     }
 }
