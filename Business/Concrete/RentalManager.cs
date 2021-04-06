@@ -62,7 +62,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
         }
 
-        [CacheAspect]
+
         public IResult IsCarRental(int carId)
         {
             var result = _rentalDal.GetAll();
@@ -72,16 +72,34 @@ namespace Business.Concrete
             {
                 if (item.CarId == carId && item.ReturnDate == null)
                 {
-                    
+
                     return new ErrorResult(Messages.RentalReturnError);
 
                 }
             }
 
-            
+
             return new SuccessResult(Messages.RentalCarAvaliable);
 
-            
+
+        }
+
+        public IResult IsCarAvaliable(Rental rental)
+        {
+            var result = _rentalDal.GetAll();
+
+            foreach (var item in result)
+            {
+                if (item.CarId == rental.CarId && (
+                    (rental.RentDate > item.RentDate && rental.RentDate < item.ReturnDate) 
+                    || 
+                    (rental.RentDate < item.RentDate && rental.ReturnDate>item.RentDate)))
+                {
+                    return new ErrorResult(Messages.RentalReturnError);
+                }
+
+            }
+            return new SuccessResult(Messages.RentalCarAvaliable);
         }
 
         [CacheRemoveAspect("IRentalService.Get")]

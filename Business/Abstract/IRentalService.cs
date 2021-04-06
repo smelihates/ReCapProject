@@ -11,6 +11,9 @@ namespace Business.Abstract
     {
         IDataResult<List<Rental>> GetAll();
         IResult IsCarRental(int carId);
+
+        IResult IsCarAvaliable(Rental rental);
+
         IResult Add(Rental rental);
         IResult Update(Rental rental);
         IResult Delete(Rental rental);

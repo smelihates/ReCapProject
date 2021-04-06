@@ -63,6 +63,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("iscaravaliable")]
+        public IActionResult IsCarAvaliable(Rental rental)
+        {
+            var result = _rentalService.IsCarAvaliable(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
